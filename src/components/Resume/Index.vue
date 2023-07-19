@@ -1,7 +1,7 @@
 <template>
   <main>
     <p>{{ labelVisual }}</p>
-    <h1>{{ amountCurrency }}</h1>
+    <h1 :class="{'red':isNegative, 'green':!isNegative}">{{ amountCurrency }}</h1>
     <div class="graphic">
       <slot name="graphic"/>
     </div>
@@ -41,6 +41,9 @@
       },
       amountCurrency(){
         return currencyFormater.format(this.amountVisual)
+      },
+      isNegative(){
+        return this.amount <0
       }
     }
   }
@@ -71,4 +74,10 @@ h1 {
   padding: 48px 24px;
   box-sizing: border-box;
 }
+  .red {
+      color: red;
+  }
+  .green {
+      color: green;
+  }
 </style>

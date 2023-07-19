@@ -8,19 +8,21 @@
       :label="label"
       :totalLabel="'Ahorro Total'"
       :amount="amount"
-      :totalAmount="5000"
+      :totalAmount="totalAmount"
       >
       <template #graphic>
-        graphic
+        <Graphic :amounts="amounts"
+        @select="select"/>
       </template>
       <template #action>
-        action
+        <Action @create="create"/>
       </template>
     </Resume>
     </template>
     <template #movement>
       <Movement
       :movements="movements"
+      @remove="remove"
       />
     </template>
   </Layout>
@@ -31,49 +33,76 @@
   import Header from './Header.vue';
   import Resume from './Resume/Index.vue';
   import Movement from './Movements/Index.vue'
+  import Action from './Action.vue';
+  import Graphic from './Resume/Graphic.vue';
   export default{
     components:{
-      Layout,
-      Header,
-      Resume,
-      Movement
-    },
+    Layout,
+    Header,
+    Resume,
+    Movement,
+    Action,
+    Graphic
+},
     data() {
       return {
         amount:null,
         label:null,
-        movements: [{
-          id: 0,
-          title: "lorem ipsum dolor",
-          description: "lorem ipsum dolor",
-          amount: 1000,
-        },{
-          id: 1,
-          title: "lorem ipsum dolor",
-          description: "lorem ipsum dolor",
-          amount: -2000,
-        },{
-          id: 2,
-          title: "lorem ipsum dolor",
-          description: "lorem ipsum dolor",
-          amount: 100,
-        },{
-          id: 3,
-          title: "lorem ipsum dolor",
-          description: "lorem ipsum dolor",
-          amount: -500,
-        },{
-          id: 4,
-          title: "lorem ipsum dolor",
-          description: "lorem ipsum dolor",
-          amount: 1500,
-        },{
-          id: 5,
-          title: "lorem ipsum dolor",
-          description: "lorem ipsum dolor",
-          amount: 3000,
-        }]
+        movements: [],
       }
     },
-  }
+   computed: {
+      amounts() {
+        const lastDays = this.movements
+          .filter(m => {
+            const today = new Date();
+            const oldDate = today.setDate(today.getDate() - 30);
+
+            return m.time > oldDate;
+          })
+          .map(m => m.amount);
+
+        return lastDays.map((m, i) => {
+          const lastMovements = lastDays.slice(0, i + 1);
+
+          return lastMovements.reduce((suma, movement) => {
+            return suma + movement
+          }, 0);
+        });
+      },
+      totalAmount(){
+        return this.movements.reduce((suma, m)=>{
+          return suma + m.amount;
+        },0)
+      }
+    },
+    mounted(){
+      const movements = JSON.parse(localStorage.getItem("movements"));
+      if(Array.isArray(movements)){
+        this.movements = movements.map(m =>{
+          return {
+            ...m,
+            time: new Date(m.time)
+          }
+        });
+      }
+    },
+    methods:{
+      create(movement){
+        this.movements.push(movement);
+        this.save();
+      },
+      remove(id){
+        const index = this.movements.findIndex(m => m.id === id);
+        this.movements.splice(index, 1);
+        this.save();
+      },
+      save(){
+        localStorage.setItem("movements", JSON.stringify(this.movements))
+      },
+      select(el){
+        this.amount = el;
+      }
+    }
+  };
 </script>
