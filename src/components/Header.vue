@@ -1,10 +1,10 @@
 <template>
   <header>
     <img
-    src="../assets/cashflow-icon.svg"
+    src="../assets/logo-mibolsillo.png"
     alt="logo"
     @click="reload"/>
-    <h1><span>Cash</span>Flow</h1>
+    <h1><span>Mi</span>Bolsillo</h1>
     <span></span>
   </header>
 </template>

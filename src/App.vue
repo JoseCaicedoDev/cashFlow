@@ -36,7 +36,12 @@ body,
   font-family: Arial, Helvetica, sans-serif;
 }
 * {
-  --brand-green: #04b500;
-  --brand-blue: #0689b0;
+  --brand-green: #2f9fa6;
+  --brand-blue: #47688d;
+  --color-font: #37434f;
+  --color-white: #e6e6e6;
+  --color-primary:#4c5d6d;
+  --color-secundary: #61778b
+
 }
 </style>

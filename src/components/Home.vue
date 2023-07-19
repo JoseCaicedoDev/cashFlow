@@ -6,7 +6,7 @@
     <template #resume>
       <Resume
       :label="label"
-      :totalLabel="'Ahorro Total'"
+      :totalLabel="'Saldo Actual'"
       :amount="amount"
       :totalAmount="totalAmount"
       >

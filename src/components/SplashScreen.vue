@@ -1,7 +1,7 @@
 <template>
   <div class="splashscreen">
-    <img src="../assets/cashflow-icon.svg" alt="logo">
-    <h1><span>Splash</span>Flow</h1>
+    <img src="../assets/logo-mibolsillo.png" alt="logo">
+    <h1><span>Mi</span>Bolsillo</h1>
   </div>
 </template>
 
