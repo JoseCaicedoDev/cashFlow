@@ -43,7 +43,7 @@
         return currencyFormater.format(this.amountVisual)
       },
       isNegative(){
-        return this.amount <0
+        return this.amountVisual < 0
       }
     }
   }
