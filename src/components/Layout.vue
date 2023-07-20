@@ -35,6 +35,8 @@
 .header {
   position: fixed;
   width: 100vw;
+  padding: 5px 0;
+  border-bottom: 1px solid #47688d50;
 }
 
 .resume {
@@ -71,5 +73,6 @@
   height: 8px;
   background-color: #e5e5e5;
   border-radius: 4px;
+  cursor: pointer;
 }
 </style>

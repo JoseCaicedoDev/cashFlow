@@ -5,7 +5,10 @@
     alt="logo"
     @click="reload"/>
     <h1><span>Mi</span>Bolsillo</h1>
-    <span></span>
+    <img class="img_avatars"
+    src="https://img.freepik.com/foto-gratis/joven-mujer-colombiana-atractiva-gafas-sol-posando-mientras-pie-junto-al-mar-dia_181624-41580.jpg?w=1800&t=st=1674592279~exp=1674592879~hmac=1276990bc65161f9f68c332774d2e5446f0b6b00d1d865b72e71e8732a58d9f7"
+    alt="logo"
+    />
   </header>
 </template>
 <script>
@@ -22,7 +25,8 @@
 /* scoped para que los estilos sean solo para el componente */
   header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-inline: 10px;
     align-items: center;
     width: 100vw;
   }
@@ -30,6 +34,13 @@
   img,
   span {
     width: 48px;
+    cursor: pointer;
+  }
+  .img_avatars{
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
   }
 
   h1 {

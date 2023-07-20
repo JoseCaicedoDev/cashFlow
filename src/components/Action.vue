@@ -72,6 +72,7 @@ button {
   padding: 24px 60px;
   border-radius: 60px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 form {
