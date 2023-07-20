@@ -31,12 +31,14 @@
   padding: 14px 0;
   box-sizing: border-box;
 }
+.header{
+  flex-direction: column;
+}
 
 .header {
   position: fixed;
   width: 100vw;
   padding: 5px 0;
-  border-bottom: 1px solid #47688d50;
 }
 
 .resume {
